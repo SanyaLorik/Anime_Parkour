@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -14,10 +15,15 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputSystem _inputSystem;
     private Vector3 _velocityDirection;
     
+    [Inject]
+    private void Construct(PlayerInputSystem inputSystem)
+    {
+        _inputSystem = inputSystem;
+    }
+    
     private void Awake()
     {
         _character = GetComponent<CharacterController>();
-        _inputSystem = new();
     }
 
     private void OnEnable()
@@ -39,7 +45,6 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {    
         GravityHandling();
-
         Move();
     }
     
@@ -60,6 +65,15 @@ public class PlayerMovement : MonoBehaviour
         } 
     }
 
+    private bool CanResetVelocityX
+    {
+        get
+        {
+            const float maxY = -0.8f;
+            return _velocityDirection.y <= maxY;
+        }
+    }
+    
     private void OnSetDirection(InputAction.CallbackContext context)
     { 
         var value = context.ReadValue<Vector2>();
@@ -86,7 +100,12 @@ public class PlayerMovement : MonoBehaviour
     private void GravityHandling()
     {
         if (_character.isGrounded == true)
+        {
+            if (CanResetVelocityX == true)
+                _velocityDirection.y = 0;
+            
             return;
+        }
         
         _velocityDirection.y -= _gravityForce * Time.deltaTime;
     }
