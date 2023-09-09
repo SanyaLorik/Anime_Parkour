@@ -22,7 +22,8 @@ public class KeyReceiver : MonoBehaviour
         if (_wasActivated == true)
             return;
 
-        other.ReciveComponent<KeyCounter>()
+        other
+            .ReciveComponent<KeyCounter>()
             .IsCorrect(keyCounter => keyCounter.CanTake(_keyCount) == true, _uiMessage.AlertNotEnoughKeys)
             .Correct(keyCounter => keyCounter.Reduce(_keyCount))
             .CorrectWithoutArguments(Hide, _interactiveObject.Interact)

@@ -37,13 +37,16 @@ public class KeyCounter : MonoBehaviour
 
     private void OnTriggerCount(Transform obj)
     {
-        obj.ReciveComponent<Key>().Correct(coin =>
-        {
-            Add();
-            coin.PickUp();
-            
-            Debug.Log("Coin is picked up.");
-        });
+        obj
+            .ReciveComponent<Key>()
+            .IsCorrect(key => key.CanPickedUp == true)
+            .Correct(coin =>
+            {
+                Add();
+                coin.PickUp();
+                
+                Debug.Log("Coin is picked up.");
+            });
     }
 
     private void Add()

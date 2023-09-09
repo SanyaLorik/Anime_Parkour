@@ -1,11 +1,6 @@
 using UnityEngine;
 
-public class InteractiveObject : MonoBehaviour
+public abstract class InteractiveObject : MonoBehaviour
 {
-    [SerializeField] private SoleAnimation _soleAnimation;
-    
-    public void Interact()
-    {
-        _soleAnimation.Animate();
-    }
+    public abstract void Interact();
 }
