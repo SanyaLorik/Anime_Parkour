@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
@@ -68,10 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float VelocityDirectionY
     {
-        set 
-        { 
-            _velocityDirection.y = value; 
-        }
+        set => _velocityDirection.y = value;
         get
         {
             return _velocityDirection.y;
@@ -130,16 +126,4 @@ public class PlayerMovement : MonoBehaviour
         
         _velocityDirection.y -= _gravityForce * Time.deltaTime;
     }
-}
-
-public class DistanceTracker : MonoBehaviour
-{
-    [SerializeField] private Transform _player;
-    
-    [Header("Ui")] 
-    [SerializeField] private Image _progress;
-
-    [Header("Point")]
-    [SerializeField] private Transform _initalPoint;
-    [SerializeField] private Transform _finalPoint;
 }
