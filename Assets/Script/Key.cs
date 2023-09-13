@@ -13,10 +13,8 @@ public class Key : MonoBehaviour
         transform
             .DOScale(Vector3.zero, _preset.Duration)
             .SetEase(_preset.Ease)
-            .OnComplete(() =>
-            {
-                gameObject.DisactivateSelf();
-                CanPickedUp = false;
-            });
+            .OnComplete(gameObject.DisactivateSelf);
+        
+        CanPickedUp = false;
     }
 }

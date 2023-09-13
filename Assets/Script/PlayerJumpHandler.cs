@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using Zenject;
@@ -10,8 +11,9 @@ public class PlayerJumpHandler : MonoBehaviour
     [SerializeField] private float _jumpTime;
     [SerializeField] private float _jumpHeight;
 
+    public event Action OnJumped;
+    
     private PlayerMovement _movement;
-    private CharacterController _controller;
     private PlayerInputSystem _inputSystem;
     
     [Inject]
@@ -23,7 +25,6 @@ public class PlayerJumpHandler : MonoBehaviour
     private void Awake()
     {
         _movement = GetComponent<PlayerMovement>();
-        _controller = GetComponent<CharacterController>();
     }
 
     private void OnEnable()
@@ -40,10 +41,11 @@ public class PlayerJumpHandler : MonoBehaviour
 
     public void Jump(float jumpTime, float jumpHeight)
     {
-        if (_controller.isGrounded == false)
+        if (_movement.CanJump == false)
             return;
         
         _movement.VelocityDirectionY = CalculateJumpVelocity(jumpTime, jumpHeight);
+        OnJumped?.Invoke();
         
         Debug.Log("Player jump.");
     }

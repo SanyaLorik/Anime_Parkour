@@ -9,7 +9,7 @@ public class Trampoline : MonoBehaviour
     [SerializeField] private float _jumpHeight;
     
     private void OnTriggerEnter(Collider other)
-    { 
+    {
         other.ReciveComponent<PlayerJumpHandler>().Correct(jumpHandler => jumpHandler.Jump(_jumpTime, _jumpHeight));
     }
 }
