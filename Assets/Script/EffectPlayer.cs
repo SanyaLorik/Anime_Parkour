@@ -48,9 +48,9 @@ public class EffectPlayer : MonoBehaviour
     {
         do
         {
-            await UniTask.WaitUntil(() => _movement.CanJump == false);
-            await UniTask.WaitUntil(() => _velocityDirectionY >=_movement.VelocityDirectionY);
-            await UniTask.WaitUntil(() => _movement.CanJump == true);
+            await UniTask.WaitUntil(() => _movement.CanJump == false, cancellationToken: destroyCancellationToken);
+            await UniTask.WaitUntil(() => _velocityDirectionY >=_movement.VelocityDirectionY, cancellationToken: destroyCancellationToken);
+            await UniTask.WaitUntil(() => _movement.CanJump == true, cancellationToken: destroyCancellationToken);
 
             _spawner.Spawn(_groundEffectPrefab, _landingPoint.position).Play();
 

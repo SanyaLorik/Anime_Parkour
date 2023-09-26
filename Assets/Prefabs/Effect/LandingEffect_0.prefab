@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 165672, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
       propertyPath: m_Name
-      value: DustDirtyPoofSoft
+      value: LandingEffect_0
       objectReference: {fileID: 0}
     - target: {fileID: 454262, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,8 +52,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19840014, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19875214, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 165672, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8408405740109582176}
   m_SourcePrefab: {fileID: 100100000, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
+--- !u!1 &645524377301008391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 165672, guid: 146d2ff25be0f824fa285b16b2915ff3, type: 3}
+  m_PrefabInstance: {fileID: 645524377301108527}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8408405740109582176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645524377301008391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfc11d421a42c6a46bfccb83db3ddaaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _timer: 2

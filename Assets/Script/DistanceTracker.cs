@@ -2,6 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 public class DistanceTracker : MonoBehaviour
 {
@@ -17,12 +18,15 @@ public class DistanceTracker : MonoBehaviour
     [Header("Settings")] 
     [SerializeField] private float _delayUpdating;
     [SerializeField][Range(0f, 1f)] private float _errorRate;
-    
+    [SerializeField][Range(0f, 1f)] private float _minimumRate;
+
+    private float _lastRotation;
+
     private void Start()
     {
+        _lastRotation = _minimumRate;
         TrackProgress().Forget();
     }
-
     private async UniTaskVoid TrackProgress()
     {
         float totalDistance = Vector3.Distance(_initalPoint.position, _finalPoint.position);
@@ -33,7 +37,10 @@ public class DistanceTracker : MonoBehaviour
             
             var remainingDistance = Vector3.Distance(_player.position, _finalPoint.position);
             float ration = 1 - (remainingDistance / totalDistance);
-            _progress.fillAmount = ration >= 1 - _errorRate ? 1f : ration;
+            float fillAmount = MathF.Max(_lastRotation, ration);
+            _lastRotation = fillAmount;
+            
+            _progress.fillAmount = ration >= 1 - _errorRate ? 1f : fillAmount;
         } 
         while (destroyCancellationToken.IsCancellationRequested == false);
     }

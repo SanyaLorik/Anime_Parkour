@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
@@ -16,7 +17,9 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterController _character;
     private PlayerInputSystem _inputSystem;
-    [SerializeField]private Vector3 _velocityDirection;
+    
+    [Header("Debug")]
+    [SerializeField] private Vector3 _velocityDirection;
     
     [Inject]
     private void Construct(PlayerInputSystem inputSystem)
@@ -27,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(_raySource.position, Vector3.down * _rayDistance);
+        
+        Gizmos.DrawRay(transform.position, _velocityDirection.normalized * 5);
     }
 
     private void Awake()
@@ -54,8 +59,9 @@ public class PlayerMovement : MonoBehaviour
     {    
         GravityHandling();
         Move();
+        Rotate();
     }
-    
+
     public float GravityForce 
     {
         set 
@@ -112,6 +118,17 @@ public class PlayerMovement : MonoBehaviour
         };
         
         _character.Move(velocity * Time.deltaTime);
+    }
+
+    private void Rotate()
+    {
+        Vector3 direction = _velocityDirection;
+        direction.y = 0;
+
+        if (direction == Vector3.zero)
+            return;
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), 360 * Time.deltaTime);
     }
 
     private void GravityHandling()

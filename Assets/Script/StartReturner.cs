@@ -5,7 +5,9 @@ using UnityEngine;
 public struct StartReturner
 {
     [SerializeField] private Transform _initialPoint;
-    
+
+    //public event Action OnReturned
+
     public void Return(PlayerMovement playerMovement)
     {
         playerMovement.transform.position = _initialPoint.position;
