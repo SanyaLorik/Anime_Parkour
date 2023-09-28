@@ -7,6 +7,11 @@ public static class ComponentExtansion
         component.gameObject.SetActive(true);
     }
 
+    public static void ActivateSelf(this GameObject component)
+    {
+        component.SetActive(true);
+    }
+
     public static void DisactivateSelf(this GameObject component)
     {
         component.SetActive(false);
