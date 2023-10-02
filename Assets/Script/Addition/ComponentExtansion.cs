@@ -27,4 +27,10 @@ public static class ComponentExtansion
         for (int i = 0; i < gameObjects.Length; i++)
             gameObjects[i].SetActive(true);
     }
+
+    public static void DisctivateArraySelf(this GameObject[] gameObjects)
+    {
+        for (int i = 0; i < gameObjects.Length; i++)
+            gameObjects[i].SetActive(false);
+    }
 }

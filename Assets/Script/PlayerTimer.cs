@@ -8,7 +8,7 @@ public class PlayerTimer : MonoBehaviour
 
     private bool _isPlaying = true;
 
-    private void Start()
+    public void StartTimer()
     {
         StartCount().Forget();
     }
