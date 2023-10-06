@@ -7,7 +7,7 @@ public class ActivityEnabler : MonoBehaviour
 
     public void Activate()
     {
-        _activateables.DisctivateArraySelf();
+        _activateables.ActivateArraySelf();
     }
 
     public void Disctivate()

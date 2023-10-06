@@ -43,16 +43,12 @@ public class PlayerMovement : MonoBehaviour
     {
         _inputSystem.Player.Move.performed += OnSetDirection;
         _inputSystem.Player.Move.canceled += OnSetDirection;
-        
-        _inputSystem.Enable();
     }
     
     private void OnDisable()
     {
         _inputSystem.Player.Move.performed -= OnSetDirection;
         _inputSystem.Player.Move.canceled -= OnSetDirection;
-        
-        _inputSystem.Disable();
     }
     
     private void Update()
