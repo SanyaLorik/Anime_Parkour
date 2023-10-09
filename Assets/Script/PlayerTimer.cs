@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -6,24 +7,46 @@ public class PlayerTimer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _text;
 
-    private bool _isPlaying = true;
+    private int _counter = 0;
+    private bool _isPaused = false;
 
     public void StartTimer()
     {
         StartCount().Forget();
     }
 
+    public void Continue()
+    {
+        _isPaused = false;
+    }
+
+    public void Stop()
+    {
+        _isPaused = true;
+    }
+
+    public void Restart()
+    {
+        _counter = 0;
+        UpdateText();
+
+        _isPaused = false;
+    }
+
     private async UniTaskVoid StartCount()
     {
-        _isPlaying = true;
-
-        int counter = 0;
-        while (_isPlaying == true && destroyCancellationToken.IsCancellationRequested == false)
+        while (destroyCancellationToken.IsCancellationRequested == false)
         {
             await UniTask.Delay(1000, cancellationToken: destroyCancellationToken);
+            await UniTask.WaitUntil(() => _isPaused == false, cancellationToken: destroyCancellationToken);
 
-            _text.text = counter.ToString();
-            counter++;
+            UpdateText();
+            _counter++;
         }
+    }
+
+    private void UpdateText()
+    {
+        _text.text = _counter.ToString();
     }
 }

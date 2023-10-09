@@ -22,4 +22,14 @@ public class PlayerAnimator : MonoBehaviour
         }
         while (destroyCancellationToken.IsCancellationRequested == false);
     }
+
+    public void Freeze()
+    {
+        _animator.speed = 0;
+    }
+
+    public void Unfreeze()
+    {
+        _animator.speed = 1;
+    }
 }

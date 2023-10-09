@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterController _character;
     private PlayerInputSystem _inputSystem;
-    
+    private MovementStoppedMode _stoppedMode;
+
     [Header("Debug")]
     [SerializeField] private Vector3 _velocityDirection;
     
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _character = GetComponent<CharacterController>();
+        _stoppedMode.Init();
     }
 
     private void OnEnable()
@@ -52,7 +54,10 @@ public class PlayerMovement : MonoBehaviour
     }
     
     private void Update()
-    {    
+    {
+        if (_stoppedMode.IsStopped == true)
+            return;
+
         GravityHandling();
         Move();
         Rotate();
@@ -83,7 +88,17 @@ public class PlayerMovement : MonoBehaviour
             return _character.isGrounded == true || Physics.Raycast(_raySource.position, Vector3.down, _rayDistance) == true;
         }
     }
-    
+
+    public void Play()
+    {
+        _velocityDirection = _stoppedMode.Play();
+    }
+
+    public void Stop()
+    {
+        _stoppedMode.Stop(_velocityDirection);
+    }
+
     private bool CanResetVelocityX
     {
         get
@@ -92,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
             return _velocityDirection.y <= maxY;
         }
     }
-    
+
     private void OnSetDirection(InputAction.CallbackContext context)
     { 
         var value = context.ReadValue<Vector2>();
@@ -138,5 +153,30 @@ public class PlayerMovement : MonoBehaviour
         }
         
         _velocityDirection.y -= _gravityForce * Time.deltaTime;
+    }
+}
+
+public struct MovementStoppedMode 
+{
+    private Vector3 _lastVelocityDirection;
+
+    public bool IsStopped { get; private set; }
+
+    public void Init()
+    {
+        IsStopped = false;
+        _lastVelocityDirection = Vector3.zero;
+    }
+
+    public Vector3 Play()
+    {
+        IsStopped = false;
+        return _lastVelocityDirection;
+    }
+
+    public void Stop(Vector3 velocityDirection)
+    {
+        _lastVelocityDirection = velocityDirection;
+        IsStopped = true;
     }
 }
