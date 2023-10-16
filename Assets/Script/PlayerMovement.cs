@@ -176,7 +176,7 @@ public struct MovementStoppedMode
 
     public void Stop(Vector3 velocityDirection)
     {
-        _lastVelocityDirection = velocityDirection;
+        _lastVelocityDirection = velocityDirection.ZeroXZ();
         IsStopped = true;
     }
 }
