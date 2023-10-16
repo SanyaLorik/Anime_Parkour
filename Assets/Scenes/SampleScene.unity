@@ -4419,6 +4419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b563eb42ce92648a76fe84e4d5c09e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 1486391203}
   _screenFader: {fileID: 310206525}
   _playerTimer: {fileID: 1486391212}
   OnStarted:
@@ -4451,6 +4452,33 @@ MonoBehaviour:
       - m_Target: {fileID: 1486391213}
         m_TargetAssemblyTypeName: ActivityInputSystem, Assembly-CSharp
         m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1486391203}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnGameLoaded:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1486391203}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Stop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4682,7 +4710,7 @@ MonoBehaviour:
   _gravityForce: 60
   _rayDistance: 0.64
   _raySource: {fileID: 731194018}
-  _velocityDirection: {x: 0, y: 0, z: 0}
+  _velocityDirection: {x: 0, y: 0, z: 1}
 --- !u!114 &1486391204
 MonoBehaviour:
   m_ObjectHideFlags: 0

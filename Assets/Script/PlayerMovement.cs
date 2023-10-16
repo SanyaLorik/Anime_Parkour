@@ -15,19 +15,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _rayDistance;
     [SerializeField] private Transform _raySource;
 
-    private CharacterController _character;
-    private PlayerInputSystem _inputSystem;
-    private MovementStoppedMode _stoppedMode;
-
-    [Header("Debug")]
+    [Header("Movement")]
     [SerializeField] private Vector3 _velocityDirection;
-    
-    [Inject]
-    private void Construct(PlayerInputSystem inputSystem)
-    {
-        _inputSystem = inputSystem;
-    }
 
+    private CharacterController _character;
+    private MovementStoppedMode _stoppedMode;
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(_raySource.position, Vector3.down * _rayDistance);
@@ -41,18 +34,6 @@ public class PlayerMovement : MonoBehaviour
         _stoppedMode.Init();
     }
 
-    private void OnEnable()
-    {
-        _inputSystem.Player.Move.performed += OnSetDirection;
-        _inputSystem.Player.Move.canceled += OnSetDirection;
-    }
-    
-    private void OnDisable()
-    {
-        _inputSystem.Player.Move.performed -= OnSetDirection;
-        _inputSystem.Player.Move.canceled -= OnSetDirection;
-    }
-    
     private void Update()
     {
         if (_stoppedMode.IsStopped == true)
@@ -106,17 +87,6 @@ public class PlayerMovement : MonoBehaviour
             const float maxY = -0.8f;
             return _velocityDirection.y <= maxY;
         }
-    }
-
-    private void OnSetDirection(InputAction.CallbackContext context)
-    { 
-        var value = context.ReadValue<Vector2>();
-        _velocityDirection = new Vector3()
-        {
-            x = value.x,
-            y = _velocityDirection.y,
-            z = value.y,
-        };
     }
 
     private void Move()
@@ -176,7 +146,7 @@ public struct MovementStoppedMode
 
     public void Stop(Vector3 velocityDirection)
     {
-        _lastVelocityDirection = velocityDirection.ZeroXZ();
+        _lastVelocityDirection = velocityDirection;
         IsStopped = true;
     }
 }
