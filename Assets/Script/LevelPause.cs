@@ -7,6 +7,7 @@ public class LevelPause : MonoBehaviour
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private PlayerAnimator _animator;
     [SerializeField] private PlayerTimer _timer;
+    [SerializeField] private GroundGenerator _generator;
 
     private PlayerInputSystem _input;
     private StartReturner _returner;
@@ -41,5 +42,7 @@ public class LevelPause : MonoBehaviour
         _movement.Play();
         _input.Enable();
         _timer.Restart();
+        _generator.DestroyAllGrounds();
+        _generator.GenerateFirts();
     }
 }

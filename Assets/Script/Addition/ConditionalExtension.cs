@@ -12,6 +12,18 @@ public static class ConditionalExtension
         return source;
     }
 
+    public static T CorrectArguments<T>(this T source, params Action<T>[] methods)
+        where T : class
+    {
+        if (source == null)
+            return null;
+
+        foreach (var method in methods)
+            method.Invoke(source);
+
+        return source;
+    }
+
     public static T CorrectWithoutArguments<T>(this T source, params Action[] methods)
         where T : class
     {

@@ -7,6 +7,7 @@ public class LevelStarter : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private UiScreenFader _screenFader;
     [SerializeField] private PlayerTimer _playerTimer;
+    [SerializeField] private GroundGenerator _generator;
 
     [SerializeField] private UnityEvent OnStarted;
     [SerializeField] private UnityEvent OnGameLoaded;
@@ -24,6 +25,7 @@ public class LevelStarter : MonoBehaviour
             {
                 OnStarted?.Invoke();
                 _playerTimer.StartTimer();
+                _generator.GenerateFirts();
             });
     }
 }
