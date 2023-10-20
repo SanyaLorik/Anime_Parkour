@@ -8,6 +8,6 @@ public struct PrefabPositionSpawner
 
     public T Spawn<T>(T prefab, Vector3 position) where T : Component
     {
-        return UnityEngine.Object.Instantiate(prefab, position, Quaternion.identity, _container);
+        return UnityEngine.Object.Instantiate(prefab, position, prefab.transform.rotation, _container);
     }
 }

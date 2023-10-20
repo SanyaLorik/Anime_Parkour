@@ -29,12 +29,12 @@ public class PlayerJumpHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputSystem.Player.Jump.performed += OnJump;
+        _inputSystem.Player.Jump.started += OnJump;
     }
 
     private void OnDisable()
     {
-        _inputSystem.Player.Jump.performed -= OnJump;
+        _inputSystem.Player.Jump.started -= OnJump;
     }
 
     public void Jump(float jumpTime, float jumpHeight)
