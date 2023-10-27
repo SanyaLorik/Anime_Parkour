@@ -29,6 +29,12 @@ public static class ComponentExtansion
             gameObjects[i].SetActive(true);
     }
 
+    public static void ActivateArraySelf(this IReadOnlyList<GameObject> gameObjects)
+    {
+        for (int i = 0; i < gameObjects.Count; i++)
+            gameObjects[i].SetActive(true);
+    }
+
     public static void DisctivateArraySelf(this GameObject[] gameObjects)
     {
         for (int i = 0; i < gameObjects.Length; i++)

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Zenject;
 
@@ -14,25 +13,5 @@ public class PrefabPositionSpawnerInstaller : MonoInstaller
             .AsCached();
         
         Debug.Log("PrefabPositionSpawnerInstaller is installed.");
-    }
-}
-
-public class GroundPlacer : MonoBehaviour
-{
-
-}
-
-public class GroundDistributor : MonoBehaviour
-{
-    [SerializeField] private GroundPlacer _groundPlacer;
-
-    public void Push(Ground ground)
-    {
-
-    }
-
-    public void Get()
-    {
-
     }
 }
