@@ -12,7 +12,10 @@ public class PlayerTimer : MonoBehaviour
 
     public void StartTimer()
     {
-        StartCount().Forget();
+        if (_isPaused == false)
+            StartCount().Forget();
+
+        _isPaused = false;
     }
 
     public void Continue()
@@ -25,11 +28,15 @@ public class PlayerTimer : MonoBehaviour
         _isPaused = true;
     }
 
-    public void Restart()
+    public void ResetTimer()
     {
         _counter = 0;
         UpdateText();
+    }
 
+    public void Restart()
+    {
+        ResetTimer();
         _isPaused = false;
     }
 
@@ -40,8 +47,8 @@ public class PlayerTimer : MonoBehaviour
             await UniTask.Delay(1000, cancellationToken: destroyCancellationToken);
             await UniTask.WaitUntil(() => _isPaused == false, cancellationToken: destroyCancellationToken);
 
-            UpdateText();
             _counter++;
+            UpdateText();
         }
     }
 

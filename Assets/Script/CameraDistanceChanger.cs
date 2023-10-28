@@ -20,6 +20,11 @@ public class CameraDistanceChanger : MonoBehaviour
         TrackDistance().Forget();
     }
 
+    public void ResetDistance()
+    {
+        _framingTransposer.m_CameraDistance = _initialDistance;
+    }
+
     private async UniTaskVoid TrackDistance()
     {
         do
