@@ -58,3 +58,22 @@ public class EffectPlayer : MonoBehaviour
         while (destroyCancellationToken.IsCancellationRequested == false);
     }
 }
+
+public class AudioPlayer : MonoBehaviour
+{
+    [SerializeField] private PlayerMovement _movement;
+    [SerializeField] private PlayerJumpHandler _jumpHandler;
+
+    [SerializeField] private AudioSource _running;
+    [SerializeField] private AudioSource _jumping;
+
+    private async UniTaskVoid PlaySoundAsync()
+    {
+        do
+        {
+
+
+        }
+        while (destroyCancellationToken.IsCancellationRequested == false);
+    }
+}
