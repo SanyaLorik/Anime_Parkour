@@ -38,6 +38,7 @@ namespace YG.Example
         void FailedPurchased(string id)
         {
             failedPurchased?.Invoke();
+            YandexGame.SaveProgress();
         }
     }
 }

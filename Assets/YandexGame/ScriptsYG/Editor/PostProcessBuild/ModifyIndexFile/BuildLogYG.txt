@@ -1,2 +1,2 @@
-Build path: D:/Unity/Release/PluginYG/PluginYG
-Build number: 12
+Build path: D:/Documents/Projects/Unity/Builds/Anime_Parkour
+Build number: 15
