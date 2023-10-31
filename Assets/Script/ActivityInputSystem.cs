@@ -3,10 +3,10 @@ using Zenject;
 
 public class ActivityInputSystem : MonoBehaviour
 {
-    private PlayerInputSystem _input;
+    private InputSystem _input;
 
     [Inject]
-    private void Construct(PlayerInputSystem input)
+    private void Construct(InputSystem input)
     {
         _input = input;
     }

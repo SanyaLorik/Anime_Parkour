@@ -3,11 +3,15 @@ using Zenject;
 
 public class InputSystemInstaller : MonoInstaller
 {
+    [SerializeField] private InputSystem _inputSystem;
+
     public override void InstallBindings()
     {
+        _inputSystem.Init();
+
         Container
-            .Bind<PlayerInputSystem>()
-            .FromInstance(new());
+            .Bind<InputSystem>()
+            .FromInstance(_inputSystem);
         
         Debug.Log("PlayerInputSystem is installed.");
     }

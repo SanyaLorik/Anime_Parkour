@@ -12,11 +12,11 @@ public class LevelExit : MonoBehaviour
 
     [SerializeField] private UnityEvent OnExited;
 
-    private PlayerInputSystem _input;
+    private InputSystem _input;
     private StartReturner _returner;
 
     [Inject]
-    private void Construct(PlayerInputSystem input, StartReturner returner)
+    private void Construct(InputSystem input, StartReturner returner)
     {
         _input = input;
         _returner = returner;

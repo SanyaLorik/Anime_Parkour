@@ -14,12 +14,12 @@ public class PlayerJumpHandler : MonoBehaviour
     public event Action OnJumped;
     
     private PlayerMovement _movement;
-    private PlayerInputSystem _inputSystem;
+    private InputSystem _input;
     
     [Inject]
-    private void Construct(PlayerInputSystem inputSystem)
+    private void Construct(InputSystem inputSystem)
     {
-        _inputSystem = inputSystem;
+        _input = inputSystem;
     }
     
     private void Awake()
@@ -29,12 +29,12 @@ public class PlayerJumpHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        _inputSystem.Player.Jump.started += OnJump;
+        _input.OnJumpStarted += OnJump;
     }
 
     private void OnDisable()
     {
-        _inputSystem.Player.Jump.started -= OnJump;
+        _input.OnJumpStarted -= OnJump;
     }
 
     public void Jump(float jumpTime, float jumpHeight)
@@ -48,7 +48,7 @@ public class PlayerJumpHandler : MonoBehaviour
         Debug.Log("Player jump.");
     }
     
-    private void OnJump(InputAction.CallbackContext _)
+    private void OnJump()
     {
         Jump(_jumpTime, _jumpHeight);
     }

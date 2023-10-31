@@ -9,11 +9,11 @@ public class LevelPause : MonoBehaviour
     [SerializeField] private PlayerTimer _timer;
     [SerializeField] private GroundGenerator _generator;
 
-    private PlayerInputSystem _input;
+    private InputSystem _input;
     private StartReturner _returner;
 
     [Inject]
-    private void Construct(PlayerInputSystem input, StartReturner returner)
+    private void Construct(InputSystem input, StartReturner returner)
     {
         _input = input;
         _returner = returner;
