@@ -15,7 +15,7 @@ public class FollowerMainGround : MonoBehaviour
 
     private async UniTaskVoid FollowForPlayer()
     {
-        int delay = 256;
+        const int delay = 256;
 
         do
         {
