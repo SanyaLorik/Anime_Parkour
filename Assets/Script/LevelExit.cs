@@ -9,6 +9,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] private GroundGenerator _generator;
     [SerializeField] private UiScreenFader _screenFader;
     [SerializeField] private CameraDistanceChanger _cameraDistanceChanger;
+    [SerializeField] private DistanceTracker _distanceTracker;
 
     [SerializeField] private UnityEvent OnExited;
 
@@ -32,6 +33,8 @@ public class LevelExit : MonoBehaviour
         _timer.ResetTimer();
         _screenFader.Fade();
         _cameraDistanceChanger.ResetDistance();
+        _distanceTracker.ResetScoreCounter();
+
         OnExited?.Invoke();
     }
 }

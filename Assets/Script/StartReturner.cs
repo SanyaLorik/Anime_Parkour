@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct StartReturner
+public class StartReturner
 {
     [SerializeField] private Transform _initialPoint;
 
-    //public event Action OnReturned
+    public event Action OnReturned;
 
     public void Return(PlayerMovement playerMovement)
     {
@@ -14,7 +14,9 @@ public struct StartReturner
         
         playerMovement.DisactivateSelf();
         playerMovement.ActivateSelf();
-        
+
+        OnReturned?.Invoke();
+
         Debug.Log("Player is returned to the start.");
     }
 }

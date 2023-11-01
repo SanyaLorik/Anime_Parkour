@@ -1,7 +1,8 @@
-using System;
 using Cysharp.Threading.Tasks;
+using System;
+using System.Threading;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 using Zenject;
 
 public class DistanceTracker : MonoBehaviour
@@ -9,39 +10,140 @@ public class DistanceTracker : MonoBehaviour
     [SerializeField] private Transform _player;
     
     [Header("Ui")] 
-    [SerializeField] private Image _progress;
+    [SerializeField] private UiDistanceTracker _ui;
 
     [Header("Point")]
     [SerializeField] private Transform _initalPoint;
     [SerializeField] private Transform _finalPoint;
 
     [Header("Settings")] 
-    [SerializeField] private float _delayUpdating;
-    [SerializeField][Range(0f, 1f)] private float _errorRate;
-    [SerializeField][Range(0f, 1f)] private float _minimumRate;
+    [SerializeField] private float _delay;
+    [SerializeField] private int _addingScore;
 
-    private float _lastRotation;
+    private StartReturner _startReturner;
+    private long _currentScore = 0;
+    private long _bestScore = 0;
+
+    private CancellationTokenSource _tokenSource;
+    private bool _isPaused = false;
+
+    [Inject]
+    private void Construct(StartReturner startReturner)
+    {
+        _startReturner = startReturner;
+    }
 
     private void Start()
     {
-        _lastRotation = _minimumRate;
-        TrackProgress().Forget();
+        StartCountScore();
     }
-    private async UniTaskVoid TrackProgress()
+
+    private void OnEnable()
     {
-        float totalDistance = Vector3.Distance(_initalPoint.position, _finalPoint.position);
-        
+        _startReturner.OnReturned += OnFixScore;
+    }
+
+    private void OnDisable()
+    {
+        _startReturner.OnReturned -= OnFixScore;
+    }
+
+    private void OnDestroy()
+    {
+        _tokenSource?.Cancel();
+        _tokenSource?.Dispose();
+    }
+
+    public void StartCountScore()
+    {
+        _isPaused = false;
+        _tokenSource = new();
+        CountCurrentScore(_tokenSource.Token).Forget();
+    }
+
+    public void PauseCountScore()
+    {
+        _isPaused = true;
+    }
+
+    public void ContinueCountScore()
+    {
+        _isPaused = false;
+    }
+
+    public void ResetScoreCounter()
+    {
+        _tokenSource?.Cancel();
+        _currentScore = 0;
+        _ui.ShowPopupBestScore(_currentScore);
+    }
+
+    private void OnFixScore()
+    {
+        if (_bestScore < _currentScore)
+        {
+            /*
+             * нропюбйс мю яепбеп ксвьецн яверю !!!
+             * онксвемхе я яепбепю ксвьецн яверю !!!
+             */
+
+            _ui.SetBestScore(_currentScore);
+            _ui.ShowPopupBestScore(_currentScore);
+            _bestScore = _currentScore;
+        }
+
+        _currentScore = 0;
+        CustomDebug.Log("Score is fixed! Current score is ", _currentScore);
+    }
+
+    private async UniTaskVoid CountCurrentScore(CancellationToken token)
+    {
+        bool isAttainedBestScore = false;
+
         do
         {
-            await UniTask.Delay(_delayUpdating.ToDelayMillisecond());
-            
-            var remainingDistance = Vector3.Distance(_player.position, _finalPoint.position);
-            float ration = 1 - (remainingDistance / totalDistance);
-            float fillAmount = MathF.Max(_lastRotation, ration);
-            _lastRotation = fillAmount;
-            
-            _progress.fillAmount = ration >= 1 - _errorRate ? 1f : fillAmount;
+            await UniTask.Delay(_delay.ToDelayMillisecond(), cancellationToken: token);
+            await UniTask.WaitUntil(() => _isPaused == false, cancellationToken: token);
+
+            _currentScore += _addingScore;
+            _ui.SetCurrentScore(_currentScore);
+
+            if (isAttainedBestScore == false)
+            {
+                if (_currentScore >= _bestScore)
+                {
+                    _ui.ShowPopupAttainedToBestScore();
+                    isAttainedBestScore = true;
+                }
+            }
         } 
-        while (destroyCancellationToken.IsCancellationRequested == false);
+        while (token.IsCancellationRequested == false);
+    }
+}
+
+[Serializable]
+public struct UiDistanceTracker
+{
+    [SerializeField] private TextMeshProUGUI _currentScore;
+    [SerializeField] private TextMeshProUGUI _bestScore;
+
+    public void SetBestScore(long score)
+    {
+        _bestScore.text = score.ToString();
+    }
+
+    public void SetCurrentScore(long score)
+    {
+        _currentScore.text = score.ToString();
+    }
+
+    public void ShowPopupBestScore(long bestScore)
+    {
+
+    }
+
+    public void ShowPopupAttainedToBestScore()
+    {
+
     }
 }
