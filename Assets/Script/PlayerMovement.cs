@@ -12,8 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Gravity handling")]
     [SerializeField] private float _gravityForce = 9.8f;
-    [SerializeField] private float _rayDistance;
-    [SerializeField] private Transform _raySource;
+    [SerializeField] private LayerMask _layerGround;
+    [SerializeField] private Transform _centre;
+    [SerializeField] private Vector3 _size;
 
     [Header("Movement")]
     [SerializeField] private Vector3 _velocityDirection;
@@ -23,10 +24,11 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(_raySource.position, Vector3.down * _rayDistance);
-        
         Gizmos.DrawRay(transform.position, _velocityDirection.normalized * 5);
+
+        Gizmos.DrawWireCube(_centre.position, _size);
     }
+
 
     private void Awake()
     {
@@ -66,7 +68,8 @@ public class PlayerMovement : MonoBehaviour
     {
         get
         {
-            return _character.isGrounded == true || Physics.Raycast(_raySource.position, Vector3.down, _rayDistance) == true;
+            return _character.isGrounded == true || 
+                Physics.CheckBox(_centre.position, _size * 0.5f, transform.rotation, _layerGround) == true;
         }
     }
 

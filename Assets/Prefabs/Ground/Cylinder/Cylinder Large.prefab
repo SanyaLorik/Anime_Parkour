@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8568781896340432870}
   - component: {fileID: 3297691703204830505}
   - component: {fileID: 8206910443292889117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder Large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +177,8 @@ MonoBehaviour:
   - {fileID: 4530944564143849768}
   _ease: 24
   _duration: 0.25
+  _decorations: []
+  _percentActivator: 0
 --- !u!1 &6113247139226753538
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,7 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5115801723503533546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7854679760462701157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +250,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4530944564143849768}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

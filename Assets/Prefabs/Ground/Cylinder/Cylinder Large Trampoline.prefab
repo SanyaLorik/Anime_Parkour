@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8568781896340432870}
   - component: {fileID: 3297691703204830505}
   - component: {fileID: 8206910443292889117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder Large Trampoline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,6 +178,8 @@ MonoBehaviour:
   - {fileID: 4530944564143849768}
   _ease: 24
   _duration: 0.25
+  _decorations: []
+  _percentActivator: 0
 --- !u!1 &6113247139226753538
 GameObject:
   m_ObjectHideFlags: 0
@@ -187,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5115801723503533546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7854679760462701157}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4530944564143849768}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Point_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -330,6 +332,18 @@ PrefabInstance:
     - target: {fileID: 4562493655618894370, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
       propertyPath: m_Name
       value: Trampoline
+      objectReference: {fileID: 0}
+    - target: {fileID: 4562493655618894370, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5163704778203928761, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7907772593768480920, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
