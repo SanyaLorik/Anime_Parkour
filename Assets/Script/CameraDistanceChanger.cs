@@ -31,8 +31,8 @@ public class CameraDistanceChanger : MonoBehaviour
         {
             await UniTask.WaitUntil(() => _movement.VelocityDirectionY >= _velocityDirectionY);
             _framingTransposer.m_CameraDistance = _distance;
-            
-            await UniTask.WaitUntil(() => _movement.CanJump == true);
+
+            await UniTask.WaitUntil(() => _movement != null && _movement.CanJump == true);
             _framingTransposer.m_CameraDistance = _initialDistance;
         } 
         while (destroyCancellationToken.IsCancellationRequested == false);

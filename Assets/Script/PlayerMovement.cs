@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         get
         {
             return _character.isGrounded == true || 
-                Physics.CheckBox(_centre.position, _size * 0.5f, transform.rotation, _layerGround) == true;
+                Physics.CheckBox(_centre.position, _size * 0.5f, transform.rotation, _layerGround, QueryTriggerInteraction.Ignore) == true;
         }
     }
 

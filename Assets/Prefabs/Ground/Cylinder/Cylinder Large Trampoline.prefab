@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1008746081543275038
+--- !u!1 &639797500794610230
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8780311822942150541}
-  - component: {fileID: 4964337051782647823}
-  - component: {fileID: 2470071319172307573}
-  - component: {fileID: 9210541597015592405}
-  - component: {fileID: 8568781896340432870}
-  - component: {fileID: 3297691703204830505}
-  - component: {fileID: 8206910443292889117}
+  - component: {fileID: 7024563591757368242}
+  - component: {fileID: 8400826543118069133}
+  - component: {fileID: 4709762625496049957}
+  - component: {fileID: 6057156636371705111}
   m_Layer: 6
-  m_Name: Cylinder Large Trampoline
+  m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8780311822942150541
+--- !u!4 &7024563591757368242
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008746081543275038}
+  m_GameObject: {fileID: 639797500794610230}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 1, z: 4}
+  m_LocalScale: {x: 4, y: 0.35, z: 4}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3809688605825741727}
-  - {fileID: 7854679760462701157}
-  - {fileID: 5115801723503533546}
-  - {fileID: 4530944564143849768}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 8780311822942150541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4964337051782647823
+--- !u!33 &8400826543118069133
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008746081543275038}
+  m_GameObject: {fileID: 639797500794610230}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2470071319172307573
+--- !u!23 &4709762625496049957
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008746081543275038}
+  m_GameObject: {fileID: 639797500794610230}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -91,13 +84,13 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &9210541597015592405
+--- !u!65 &6057156636371705111
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008746081543275038}
+  m_GameObject: {fileID: 639797500794610230}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -112,6 +105,45 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!1 &1008746081543275038
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8780311822942150541}
+  - component: {fileID: 8568781896340432870}
+  - component: {fileID: 3297691703204830505}
+  - component: {fileID: 8206910443292889117}
+  m_Layer: 6
+  m_Name: Cylinder Large Trampoline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8780311822942150541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008746081543275038}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3809688605825741727}
+  - {fileID: 7854679760462701157}
+  - {fileID: 5115801723503533546}
+  - {fileID: 4530944564143849768}
+  - {fileID: 7024563591757368242}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8568781896340432870
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,7 +163,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Size: {x: 4, y: 1, z: 4}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &3297691703204830505
 Rigidbody:
@@ -205,7 +237,7 @@ Transform:
   m_GameObject: {fileID: 6113247139226753538}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1, z: 4}
+  m_LocalPosition: {x: 0, y: -1, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -236,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 6346573015641141046}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 4}
+  m_LocalPosition: {x: 0, y: 1, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -267,7 +299,7 @@ Transform:
   m_GameObject: {fileID: 8510654707918333718}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4}
+  m_LocalPosition: {x: 0, y: 0, z: 22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -283,11 +315,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 813844191648667682, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813844191648667682, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 813844191648667682, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
       propertyPath: m_LocalPosition.x
@@ -295,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 813844191648667682, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.1
+      value: 0.445
       objectReference: {fileID: 0}
     - target: {fileID: 813844191648667682, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
       propertyPath: m_LocalPosition.z
@@ -344,6 +376,14 @@ PrefabInstance:
     - target: {fileID: 7907772593768480920, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095430630192419786, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
+      propertyPath: _jumpTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9095430630192419786, guid: 666d49740bacef94bbbbfce66ba79553, type: 3}
+      propertyPath: _jumpHeight
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

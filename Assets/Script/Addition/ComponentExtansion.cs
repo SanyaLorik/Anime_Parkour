@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class ComponentExtansion
@@ -25,24 +26,36 @@ public static class ComponentExtansion
 
     public static void ActivateArraySelf(this GameObject[] gameObjects)
     {
+        if (gameObjects.Length == 0)
+            return;
+
         for (int i = 0; i < gameObjects.Length; i++)
             gameObjects[i].SetActive(true);
     }
 
     public static void ActivateArraySelf(this IReadOnlyList<GameObject> gameObjects)
     {
+        if (gameObjects.Count == 0)
+            return;
+
         for (int i = 0; i < gameObjects.Count; i++)
             gameObjects[i].SetActive(true);
     }
 
     public static void DisctivateArraySelf(this GameObject[] gameObjects)
     {
+        if (gameObjects.Length == 0)
+            return;
+
         for (int i = 0; i < gameObjects.Length; i++)
             gameObjects[i].SetActive(false);
     }
 
     public static void DestroyArrayGameobjectsSelf(this GameObject[] gameObjects)
     {
+        if (gameObjects.Length == 0)
+            return;
+
         for (int i = 0; i < gameObjects.Length; i++)
             UnityEngine.Object.Destroy(gameObjects[i]);
     }

@@ -552,7 +552,7 @@ Transform:
   m_GameObject: {fileID: 110399680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.44, z: 19.39}
+  m_LocalPosition: {x: 0, y: -1.44, z: 33.69}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5490,8 +5490,8 @@ Transform:
   m_GameObject: {fileID: 1400133140}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.45, z: -3.9128}
-  m_LocalScale: {x: 5.1070547, y: 1, z: 27.019285}
+  m_LocalPosition: {x: 0, y: -1.45, z: 4.2466}
+  m_LocalScale: {x: 5.1070547, y: 1, z: 43.338932}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 756175842}
@@ -8493,15 +8493,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabs:
-  - {fileID: 8206910443292889117, guid: f76285c7a6084da42b7a83703c523103, type: 3}
-  - {fileID: 8206910443292889117, guid: 5ba060bb9d55d174c941b1a3345d0940, type: 3}
-  - {fileID: 8206910443292889117, guid: 58ad4835dc14db2418cd0d9f6310b972, type: 3}
-  - {fileID: 625805451909167899, guid: 793d516565a1aa24381825aecca9a35f, type: 3}
+  - {fileID: 625805451909167899, guid: 9979edd254f3cfa4d95bcc97fd4dc64e, type: 3}
   - {fileID: 625805451909167899, guid: 365639e4c0905b143b5a72140f6b70db, type: 3}
   - {fileID: 625805451909167899, guid: 1c9a61244057ffa4f914995ccf93f1c1, type: 3}
   - {fileID: 625805451909167899, guid: 18098e3b08df52d4a90d7124a0c08f60, type: 3}
   - {fileID: 625805451909167899, guid: a6efc1b3cb09481409f3e2b8bd2931d2, type: 3}
   - {fileID: 625805451909167899, guid: 2ac9eb02c5bcd99439f131501282db8c, type: 3}
+  - {fileID: 8206910443292889117, guid: f76285c7a6084da42b7a83703c523103, type: 3}
+  - {fileID: 8206910443292889117, guid: 620c8d8e359a82648b837717677e988f, type: 3}
   _initalPoint: {fileID: 110399681}
   _initialCountSpawning: 1
 --- !u!114 &1899687895
@@ -9793,6 +9792,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2806941381487390841, guid: a41ab576c3b016540aed7505ecaf832f, type: 3}
       propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3461596725347792449, guid: a41ab576c3b016540aed7505ecaf832f, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4377788370415826412, guid: a41ab576c3b016540aed7505ecaf832f, type: 3}
