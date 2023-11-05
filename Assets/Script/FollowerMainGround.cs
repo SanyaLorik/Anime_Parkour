@@ -21,7 +21,7 @@ public class FollowerMainGround : MonoBehaviour
         {
             await UniTask.Delay(delay, cancellationToken: destroyCancellationToken);
             _source.position = _player.position + _offset;
-            await UniTask.WaitUntil(() => _movement.CanJump == true);
+            await UniTask.WaitUntil(() => _movement != null && _movement.CanJump == true);
         } 
         while (destroyCancellationToken.IsCancellationRequested == false);
     }
