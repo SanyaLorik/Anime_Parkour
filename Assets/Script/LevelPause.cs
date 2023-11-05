@@ -9,6 +9,7 @@ public class LevelPause : MonoBehaviour
     [SerializeField] private PlayerTimer _timer;
     [SerializeField] private GroundGenerator _generator;
     [SerializeField] private DistanceTracker _distanceTracker;
+    [SerializeField] private InputSystemViewer _inputSystemViewer;
 
     private InputSystem _input;
     private StartReturner _returner;
@@ -49,5 +50,6 @@ public class LevelPause : MonoBehaviour
         _generator.GenerateFirts();
         _distanceTracker.ResetScoreCounter();
         _distanceTracker.StartCountScore();
+        _inputSystemViewer.StartAnimation();
     }
 }

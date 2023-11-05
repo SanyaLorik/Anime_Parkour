@@ -9,6 +9,7 @@ public class LevelStarter : MonoBehaviour
     [SerializeField] private PlayerTimer _playerTimer;
     [SerializeField] private GroundGenerator _generator;
     [SerializeField] private DistanceTracker _distanceTracker;
+    [SerializeField] private InputSystemViewer _inputSystemViewer;
 
     [SerializeField] private UnityEvent OnStarted;
     [SerializeField] private UnityEvent OnGameLoaded;
@@ -26,6 +27,7 @@ public class LevelStarter : MonoBehaviour
             {
                 OnStarted?.Invoke();
 
+                _inputSystemViewer.StartAnimation();
                 _playerTimer.StartTimer();
                 _generator.GenerateFirts();
                 _distanceTracker.StartCountScore();
