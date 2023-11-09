@@ -37,15 +37,12 @@ public class InputSystemViewer : MonoBehaviour
 
     private void OnStartAnimation()
     {
-        _mobile.Container.ActivateSelf();
-        Animate(_mobile).Forget();
-        /*
         if (IsDesktop == true)
             Animate(_desktop).Forget();
         else
             Animate(_mobile).Forget();
-        */
-        //ActiveContainerControl(IsDesktop);
+
+        ActiveContainerControl(IsDesktop);
     }
 
     private async UniTaskVoid Animate(AnimationInputSystemDevice animation)
