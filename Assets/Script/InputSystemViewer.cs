@@ -1,4 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System;
 using UnityEngine;
 using YG;
@@ -52,6 +53,9 @@ public class InputSystemViewer : MonoBehaviour
         animation.Normal.ActivateSelf();
         animation.Pressed.DisactivateSelf();
 
+        animation.Container.transform.localScale = Vector3.zero;
+        await animation.Container.transform.DOScale(Vector3.one, animation.Duration).SetEase(animation.Ease).AsyncWaitForCompletion().AsUniTask();
+
         for (int i = 0; i < animation.Count; i++)
         {
             animation.Normal.DisactivateSelf();
@@ -64,6 +68,8 @@ public class InputSystemViewer : MonoBehaviour
 
             await UniTask.Delay(animation.Delay.ToDelayMillisecond(), cancellationToken: destroyCancellationToken);
         }
+
+        await animation.Container.transform.DOScale(Vector3.zero, animation.Duration).SetEase(animation.Ease).AsyncWaitForCompletion().AsUniTask();
 
         animation.Container.DisactivateSelf();
     }
@@ -87,4 +93,10 @@ public struct AnimationInputSystemDevice
     [field: SerializeField] public int Count { get; private set; }
 
     [field: SerializeField] public float Delay { get; private set; }
+
+
+    [field: Header("Incoming/Outcoming")]
+    [field: SerializeField] public Ease Ease { get; private set; }
+
+    [field: SerializeField] public float Duration { get; private set; }
 }
