@@ -20,7 +20,13 @@ public class InputSystem
 
     public void Init()
     {
-        _input = new();
+        if (YandexGame.EnvironmentData.isDesktop == true)
+        {
+            _movement.DisactivateSelf();
+            _input = new();
+
+            return;
+        }
 
         _eventTrigger = _movement.gameObject.AddComponent<EventTrigger>();
 
@@ -30,21 +36,29 @@ public class InputSystem
 
     public void Enable()
     {
-        _input.Enable();
+        if (YandexGame.EnvironmentData.isDesktop == true)
+        {
+            _input.Enable();
+            _input.Player.Jump.started += OnPassByKeyboard;
+            return;
+        }
+
         _entry.callback.AddListener(OnTouchByPhone);
         _eventTrigger.triggers.Add(_entry);
-
-        _input.Player.Jump.started += OnPassByKeyboard;
     }
 
 
     public void Disable()
     {
-        _input.Disable();
+        if (YandexGame.EnvironmentData.isDesktop == true)
+        {
+            _input.Disable();
+            _input.Player.Jump.started -= OnPassByKeyboard;
+            return;
+        }
+
         _entry.callback.RemoveListener(OnTouchByPhone);
         _eventTrigger.triggers.Add(_entry);
-
-        _input.Player.Jump.started -= OnPassByKeyboard;
     }
 
     private void OnTouchByPhone(BaseEventData eventData)

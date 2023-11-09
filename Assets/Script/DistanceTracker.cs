@@ -33,11 +33,6 @@ public class DistanceTracker : MonoBehaviour
         _startReturner = startReturner;
     }
 
-    private void Start()
-    {
-        StartCountScore();
-    }
-
     private void OnEnable()
     {
         _startReturner.OnReturned += OnFixScore;
@@ -92,8 +87,8 @@ public class DistanceTracker : MonoBehaviour
             _bestScore = _currentScore;
         }
 
-        _currentScore = 0;
         CustomDebug.Log("Score is fixed! Current score is ", _currentScore);
+        _currentScore = 0;
     }
 
     private async UniTaskVoid CountCurrentScore(CancellationToken token)

@@ -11,6 +11,7 @@ public class InputSystemViewer : MonoBehaviour
     [SerializeField] private AnimationInputSystemDevice _mobile;
 
     private StartReturner _returner;
+    private bool _isPaused = false;
 
     [Inject]
     private void Construct(StartReturner returner)
@@ -31,6 +32,16 @@ public class InputSystemViewer : MonoBehaviour
     public void StartAnimation()
     {
         OnStartAnimation();
+    }
+
+    public void Pause()
+    {
+        _isPaused = true;
+    }
+
+    public void Unpause()
+    {
+        _isPaused = false;
     }
 
     private bool IsDesktop => YandexGame.EnvironmentData.isDesktop;
@@ -55,6 +66,8 @@ public class InputSystemViewer : MonoBehaviour
 
         for (int i = 0; i < animation.Count; i++)
         {
+            await UniTask.WaitUntil(() => _isPaused == false, cancellationToken: destroyCancellationToken);
+
             animation.Normal.DisactivateSelf();
             animation.Pressed.ActivateSelf();
 

@@ -1573,7 +1573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &291229817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1869,6 +1869,7 @@ GameObject:
   - component: {fileID: 310206526}
   - component: {fileID: 310206527}
   - component: {fileID: 310206528}
+  - component: {fileID: 310206529}
   m_Layer: 5
   m_Name: Interactive Canvas
   m_TagString: Untagged
@@ -2047,6 +2048,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 814592119}
   _level: {fileID: 1577350997}
+--- !u!114 &310206529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310206518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddcaf3b1a2dcb034b98758210c9a0e67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activateables:
+  - {fileID: 291229816}
+  _disactivateables:
+  - {fileID: 291229816}
 --- !u!1 &346966858
 GameObject:
   m_ObjectHideFlags: 0
@@ -6595,6 +6612,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 310206529}
+        m_TargetAssemblyTypeName: ActivityEnabler, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnGameLoaded:
     m_PersistentCalls:
       m_Calls:
@@ -7438,6 +7467,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1577350998}
+        m_TargetAssemblyTypeName: ActivityEnabler, Assembly-CSharp
+        m_MethodName: Disctivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 310206529}
         m_TargetAssemblyTypeName: ActivityEnabler, Assembly-CSharp
         m_MethodName: Disctivate
         m_Mode: 1
@@ -9646,7 +9687,7 @@ MonoBehaviour:
     _bestScore: {fileID: 1190848322}
   _initalPoint: {fileID: 1817159963}
   _finalPoint: {fileID: 1439201412}
-  _delay: 0.24
+  _delay: 1
   _addingScore: 1
 --- !u!114 &1899687893
 MonoBehaviour:
@@ -11049,6 +11090,123 @@ MonoBehaviour:
   _generator: {fileID: 1899687895}
   _distanceTracker: {fileID: 1899687891}
   _inputSystemViewer: {fileID: 291229822}
+  OnPaused:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 310206529}
+        m_TargetAssemblyTypeName: ActivityEnabler, Assembly-CSharp
+        m_MethodName: Disctivate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 291229821}
+        m_TargetAssemblyTypeName: PlayerPraiseDisplayer, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 291229822}
+        m_TargetAssemblyTypeName: InputSystemViewer, Assembly-CSharp
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnContinued:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 310206529}
+        m_TargetAssemblyTypeName: ActivityEnabler, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 291229821}
+        m_TargetAssemblyTypeName: PlayerPraiseDisplayer, Assembly-CSharp
+        m_MethodName: Unpause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 291229822}
+        m_TargetAssemblyTypeName: InputSystemViewer, Assembly-CSharp
+        m_MethodName: Unpause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnRestarted:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 310206529}
+        m_TargetAssemblyTypeName: ActivityEnabler, Assembly-CSharp
+        m_MethodName: Activate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 291229821}
+        m_TargetAssemblyTypeName: PlayerPraiseDisplayer, Assembly-CSharp
+        m_MethodName: Unpause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 291229822}
+        m_TargetAssemblyTypeName: InputSystemViewer, Assembly-CSharp
+        m_MethodName: Unpause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2136578769
 PrefabInstance:
   m_ObjectHideFlags: 0

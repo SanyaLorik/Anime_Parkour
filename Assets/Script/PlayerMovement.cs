@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawWireCube(_centre.position, _size);
     }
 
-
     private void Awake()
     {
         _character = GetComponent<CharacterController>();
