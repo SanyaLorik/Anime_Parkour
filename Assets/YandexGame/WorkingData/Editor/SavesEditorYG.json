@@ -1,7 +1,7 @@
 {
-    "idSave": 11,
+    "idSave": 12,
     "isFirstSession": false,
-    "language": "en",
+    "language": "ru",
     "promptDone": false,
     "money": 1,
     "newPlayerName": "Hello!",
@@ -9,5 +9,6 @@
         false,
         true,
         false
-    ]
+    ],
+    "bestScore": 3
 }

@@ -3,6 +3,7 @@ using System;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using YG;
 using Zenject;
 
 public class DistanceTracker : MonoBehaviour
@@ -85,6 +86,9 @@ public class DistanceTracker : MonoBehaviour
             _ui.SetBestScore(_currentScore);
             _ui.ShowPopupBestScore(_currentScore);
             _bestScore = _currentScore;
+
+            YandexGame.savesData.bestScore = _bestScore;
+            YandexGame.SaveProgress();
         }
 
         CustomDebug.Log("Score is fixed! Current score is ", _currentScore);

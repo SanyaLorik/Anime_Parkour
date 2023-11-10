@@ -2017,6 +2017,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _started: {fileID: 1942842505}
   _levelStarter: {fileID: 1466200482}
+  _bestScore: {fileID: 1531369497}
 --- !u!114 &310206527
 MonoBehaviour:
   m_ObjectHideFlags: 0
