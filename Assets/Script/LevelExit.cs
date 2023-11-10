@@ -26,6 +26,7 @@ public class LevelExit : MonoBehaviour
     public void Exit()
     {
         _returner.Return(_movement);
+        _movement.ResetVelocityDirectionY();
         _movement.Stop();
         _generator.DestroyAllGrounds();
         _input.Disable();

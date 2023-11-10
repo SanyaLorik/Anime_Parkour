@@ -1,5 +1,4 @@
-﻿using DG.Tweening;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using Zenject;
 
@@ -12,12 +11,12 @@ public class LevelPause : MonoBehaviour
     [SerializeField] private DistanceTracker _distanceTracker;
     [SerializeField] private InputSystemViewer _inputSystemViewer;
 
-    private InputSystem _input;
-    private StartReturner _returner;
-
     [SerializeField] private UnityEvent OnPaused;
     [SerializeField] private UnityEvent OnContinued;
     [SerializeField] private UnityEvent OnRestarted;
+
+    private InputSystem _input;
+    private StartReturner _returner;
 
     [Inject]
     private void Construct(InputSystem input, StartReturner returner)
@@ -54,6 +53,7 @@ public class LevelPause : MonoBehaviour
 
         _returner.Return(_movement);
         _animator.Unfreeze();
+        _movement.ResetVelocityDirectionY();
         _movement.Play();
         _input.Enable();
         _timer.Restart();

@@ -1,8 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using Zenject;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
@@ -80,6 +76,11 @@ public class PlayerMovement : MonoBehaviour
     public void Stop()
     {
         _stoppedMode.Stop(_velocityDirection);
+    }
+
+    public void ResetVelocityDirectionY()
+    {
+        _velocityDirection.y = 0;
     }
 
     private bool CanResetVelocityX
