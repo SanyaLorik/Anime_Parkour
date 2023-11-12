@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Zenject;
 
@@ -5,11 +6,13 @@ public class UiInstaller : MonoInstaller
 {
     [SerializeField] private UiResource _resource;
     [SerializeField] private UiMessage _uiMessage;
+    [SerializeField] private UiMenu _menu;
     
     public override void InstallBindings()
     {
         BindResource();
         BindMessage();
+        BindUiMenu();
     }
 
     private void BindResource()
@@ -28,5 +31,14 @@ public class UiInstaller : MonoInstaller
             .FromInstance(_uiMessage);
 
         Debug.Log("UiMessage is installed.");
+    }
+
+    private void BindUiMenu()
+    {
+        Container
+            .Bind<UiMenu>()
+            .FromInstance(_menu);
+
+        Debug.Log("UiMenu is installed.");
     }
 }

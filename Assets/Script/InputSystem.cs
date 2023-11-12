@@ -30,8 +30,10 @@ public class InputSystem
 
         _eventTrigger = _movement.gameObject.AddComponent<EventTrigger>();
 
-        _entry = new();
-        _entry.eventID = EventTriggerType.PointerDown;
+        _entry = new()
+        {
+            eventID = EventTriggerType.PointerDown
+        };
     }
 
     public void Enable()

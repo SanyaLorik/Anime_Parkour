@@ -27,6 +27,11 @@ public class UiMenu : MonoBehaviour
 
     private void OnLoadData()
     {
-        _bestScore.text = YandexGame.savesData.bestScore.ToString();
+        UpdateBestScore(YandexGame.savesData.bestScore);
+    }
+
+    public void UpdateBestScore(long bestScore)
+    {
+        _bestScore.text = bestScore.ToString();
     }
 }

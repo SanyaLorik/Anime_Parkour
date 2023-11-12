@@ -21,6 +21,7 @@ public class DistanceTracker : MonoBehaviour
     [SerializeField] private float _delay;
     [SerializeField] private int _addingScore;
 
+    private UiMenu _menu;
     private StartReturner _startReturner;
     private long _currentScore = 0;
     private long _bestScore = 0;
@@ -29,19 +30,22 @@ public class DistanceTracker : MonoBehaviour
     private bool _isPaused = false;
 
     [Inject]
-    private void Construct(StartReturner startReturner)
+    private void Construct(StartReturner startReturner, UiMenu menu)
     {
         _startReturner = startReturner;
+         _menu = menu;
     }
 
     private void OnEnable()
     {
         _startReturner.OnReturned += OnFixScore;
+        YandexGame.GetDataEvent += OnLoadData;
     }
 
     private void OnDisable()
     {
         _startReturner.OnReturned -= OnFixScore;
+        YandexGame.GetDataEvent -= OnLoadData;
     }
 
     private void OnDestroy()
@@ -78,14 +82,11 @@ public class DistanceTracker : MonoBehaviour
     {
         if (_bestScore < _currentScore)
         {
-            /*
-             * нропюбйс мю яепбеп ксвьецн яверю !!!
-             * онксвемхе я яепбепю ксвьецн яверю !!!
-             */
-
             _ui.SetBestScore(_currentScore);
             _ui.ShowPopupBestScore(_currentScore);
             _bestScore = _currentScore;
+
+            _menu.UpdateBestScore(_bestScore);
 
             YandexGame.savesData.bestScore = _bestScore;
             YandexGame.SaveProgress();
@@ -93,6 +94,12 @@ public class DistanceTracker : MonoBehaviour
 
         CustomDebug.Log("Score is fixed! Current score is ", _currentScore);
         _currentScore = 0;
+    }
+
+    private void OnLoadData()
+    {
+        _bestScore = YandexGame.savesData.bestScore;
+        _ui.SetBestScore(_bestScore);
     }
 
     private async UniTaskVoid CountCurrentScore(CancellationToken token)
