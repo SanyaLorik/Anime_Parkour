@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cysharp.Threading.Tasks;
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -18,8 +19,10 @@ public class InputSystem
     private EventTrigger _eventTrigger;
     private Entry _entry;
 
-    public void Init()
+    public async UniTaskVoid Init()
     {
+        await UniTask.WaitUntil(() => YandexGame.SDKEnabled == true);
+
         if (YandexGame.EnvironmentData.isDesktop == true)
         {
             _movement.DisactivateSelf();
@@ -36,8 +39,10 @@ public class InputSystem
         };
     }
 
-    public void Enable()
+    public async UniTaskVoid Enable()
     {
+        await UniTask.WaitUntil(() => YandexGame.SDKEnabled == true);
+
         if (YandexGame.EnvironmentData.isDesktop == true)
         {
             _input.Enable();
@@ -50,8 +55,10 @@ public class InputSystem
     }
 
 
-    public void Disable()
+    public async UniTaskVoid Disable()
     {
+        await UniTask.WaitUntil(() => YandexGame.SDKEnabled == true);
+
         if (YandexGame.EnvironmentData.isDesktop == true)
         {
             _input.Disable();

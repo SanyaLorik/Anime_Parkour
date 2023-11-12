@@ -13,6 +13,6 @@ public class ActivityInputSystem : MonoBehaviour
 
     public void Activate()
     {
-        _input.Enable();
+        _input.Enable().Forget();
     }
 }

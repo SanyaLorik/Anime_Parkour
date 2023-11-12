@@ -31,7 +31,7 @@ public class LevelPause : MonoBehaviour
 
         _movement.Stop();
         _animator.Freeze();
-        _input.Disable();
+        _input.Disable().Forget();
         _timer.Stop();
         _distanceTracker.PauseCountScore();
     }
@@ -42,7 +42,7 @@ public class LevelPause : MonoBehaviour
 
         _movement.Play();
         _animator.Unfreeze();
-        _input.Enable();
+        _input.Enable().Forget();
         _timer.Continue();
         _distanceTracker.ContinueCountScore();
     }    
@@ -55,7 +55,7 @@ public class LevelPause : MonoBehaviour
         _animator.Unfreeze();
         _movement.ResetVelocityDirectionY();
         _movement.Play();
-        _input.Enable();
+        _input.Enable().Forget();
         _timer.Restart();
         _generator.DestroyAllGrounds();
         _generator.GenerateFirts();

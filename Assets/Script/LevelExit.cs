@@ -29,7 +29,7 @@ public class LevelExit : MonoBehaviour
         _movement.ResetVelocityDirectionY();
         _movement.Stop();
         _generator.DestroyAllGrounds();
-        _input.Disable();
+        _input.Disable().Forget();
         _timer.Stop();
         _timer.ResetTimer();
         _screenFader.Fade();

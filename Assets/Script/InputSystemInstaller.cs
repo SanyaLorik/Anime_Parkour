@@ -7,7 +7,7 @@ public class InputSystemInstaller : MonoInstaller
 
     public override void InstallBindings()
     {
-        _inputSystem.Init();
+        _inputSystem.Init().Forget();
 
         Container
             .Bind<InputSystem>()
