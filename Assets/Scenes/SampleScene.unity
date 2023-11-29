@@ -1350,8 +1350,13 @@ MonoBehaviour:
   - {fileID: 6142707824120535792, guid: e6e21e12d8993cc4e8473fb132c37f68, type: 3}
   - {fileID: 6142707824120535792, guid: 3f768478000492248aeade22556e01b8, type: 3}
   - {fileID: 6142707824120535792, guid: 90140b5a63a000a4698a33a25359b8c5, type: 3}
+  - {fileID: 6142707824120535792, guid: 7e80204a08853334a8a61d905a314aee, type: 3}
+  - {fileID: 6142707824120535792, guid: 110325e5dc890774c94ecc2abee0ca5c, type: 3}
+  - {fileID: 6142707824120535792, guid: 8bb0b062de1208f4fb65ad1d8c2c16bd, type: 3}
+  - {fileID: 6142707824120535792, guid: aee29a0b679ce424cacba107833b2c03, type: 3}
+  - {fileID: 6142707824120535792, guid: 278dac67ae56575479091c2a498f4189, type: 3}
   _jumpHandler: {fileID: 1486391204}
-  _jumpRatio: 0.44
+  _jumpRatio: 0.56
 --- !u!114 &291229822
 MonoBehaviour:
   m_ObjectHideFlags: 0
